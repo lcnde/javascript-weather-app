@@ -1,0 +1,16 @@
+{
+  "name": "javascript-weather-app",
+  "version": "1.0.0",
+  "description": "Website that displays the weather of any city you want. Uses javascript async code and promises. Also uses fetch to work with external APIs",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "loadsh": "^0.0.4"
+  }
+}
