@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import './style.scss';
 
 const weather = async function weather(cityName) {
   let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.OPENWEATHER_API}`, {mode: 'cors'});

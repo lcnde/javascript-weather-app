@@ -21,9 +21,9 @@ $ npm run build
 ```
 To bundle the code.
 
-If you plan to clone the repository and make changes to it, while you code run
+If you plan to make changes to the code run
 ```
-$ nom run watch
+$ npm run watch
 ```
-This way the code inside `main.js` will update itself while you work inside `index.js`. 
+This way the code inside `main.js` will update itself while you work inside `index.js`, so you will not have to run the build everytime you make a change.
 

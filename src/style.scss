@@ -1,0 +1,15 @@
+$background :#1f1f1f;
+$backgroundUnselected: #282828;
+$textWhite: #ffffff;
+$textGray: #6c6c6c;
+$gradientTop: #fb61e5;
+$gradientBootm: #3463f3;
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background;
+  color: $textWhite;
+}
