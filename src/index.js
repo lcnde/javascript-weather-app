@@ -3,7 +3,7 @@ import './style.scss';
 
 //this is the function that fetches the json with the data you need using the API
 const weather = async function weather(cityName) {
-  let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.OPENWEATHER_API}`, {mode: 'cors'});
+  let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.OPENWEATHER_API}`, {mode: 'cors'});
   let data = await response.json();
   return data;
 };
@@ -20,6 +20,9 @@ async function formSubmit() {
   loader.add();
   var cityWeather = await weather(document.frm1.city.value);
   loader.remove();
+  previsionContainer(cityWeather.name);
+  degreesContainer(cityWeather.main.temp);
+  iconContainer(cityWeather.weather[0].id)
   console.log(cityWeather);
 };
 
@@ -43,9 +46,98 @@ function forecastContainer() {
   };
 };
 
-// function previsionContainer() {
+function previsionContainer(location) {
+  var e = document.createElement('div');
+  e.classList.add('prevision-container');
+  document.querySelector('.forecast-container').appendChild(e);
+  var e = document.createElement('h3');
+  e.textContent = `${location}`;
+  document.querySelector('.prevision-container').appendChild(e);
+};
 
-// }
+function degreesContainer(degrees) {
+  var e = document.createElement('div');
+  e.classList.add('degrees-container');
+  document.querySelector('.forecast-container').appendChild(e);
+  var e = document.createElement('h1');
+  var rounded = Math.round(degrees);
+  e.textContent = `${rounded}`;
+  document.querySelector('.degrees-container').appendChild(e);
+  var e = document.createElement('p');
+  e.textContent = '°';
+  document.querySelector('.degrees-container').appendChild(e);
+};
+
+function iconContainer(weather) {
+  var e = document.createElement('div');
+  e.classList.add('icon-container');
+  document.querySelector('.forecast-container').appendChild(e);
+
+  if (weather >= 200 && weather <= 232 || weather >= 300 && weather <= 321 || weather >= 500 && weather <= 531 || weather >= 701 && weather <= 781) {
+    soggyIcon();
+  } else if (weather >= 600 && weather <= 622) {
+    chillyIcon();
+  } else if (weather == 800) {
+    sunnyIcon();
+  } else if (weather >= 801 && weather <= 804) {
+    perfectIcon();
+  };
+};
+
+function soggyIcon() {
+  var a = document.createElement('div');
+  a.setAttribute('icon', 'stormy');
+  a.setAttribute('data-label', 'Soggy');
+  document.querySelector('.icon-container').appendChild(a);
+  var b = document.createElement('span');
+  b.classList.add('cloud');
+  a.appendChild(b);
+  var c = document.createElement('ul');
+  b.appendChild(c);
+  var d = document.createElement('li');
+  c.appendChild(d);
+  c.appendChild(d);
+  c.appendChild(d);
+  c.appendChild(d);
+  c.appendChild(d);
+};
+
+function sunnyIcon() {
+  var a = document.createElement('div');
+  a.setAttribute('icon', 'sunny');
+  a.setAttribute('data-label', 'Sunny');
+  document.querySelector('.icon-container').appendChild(a);
+  var b = document.createElement('span');
+  b.classList.add('sun');
+  a.appendChild(b);
+};
+
+function perfectIcon() {
+  var a = document.createElement('div');
+  a.setAttribute('icon', 'cloudy');
+  a.setAttribute('data-label', 'Perfect');
+  document.querySelector('.icon-container').appendChild(a);
+  var b = document.createElement('span');
+  b.classList.add('cloud');
+  a.appendChild(b);
+  a.appendChild(b);
+};
+
+function chillyIcon() {
+  var a = document.createElement('div');
+  a.setAttribute('icon', 'snowy');
+  a.setAttribute('data-label', 'Chilly');
+  document.querySelector('.icon-container').appendChild(a);
+  var b = document.createElement('span');
+  b.classList.add('snowman');
+  a.appendChild(b);
+  var c = document.createElement('ul');
+  b.appendChild(c);
+  var d = document.createElement('li');
+  for (var step = 0; step < 13; step++) {
+    c.appendChild(d);
+  };
+};
 
 // creates a loader animation anad removes it once the api request finishes
 const loader = {
