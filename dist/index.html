@@ -7,12 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
   </head>
   <body>
-    <h1>Welcome to your daily weather forecast</h1>
-    <p>Search the weather for a location</p>
-    <form id="frm1" name="frm1">
-      City: <input type="text" name="city" id="city"><br>
-      <input type="button" id="formSubmit" value="Submit">
-    </form>
+    <div class="main">
+      <h1>Welcome to your daily weather forecast</h1>
+      <form id="frm1" name="frm1">
+        <input type="text" name="city" id="city" class="input-field"><br>
+        <input type="button" id="formSubmit" value="Submit">
+      </form>
+      <div class="forecast-container">
+        <div class="degrees-container">
+          <h1>29</h1>
+          <p>°</p>
+        </div>
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
