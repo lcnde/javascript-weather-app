@@ -72,11 +72,15 @@ function iconContainer(weather) {
   var e = document.createElement('div');
   e.classList.add('icon-container');
   document.querySelector('.forecast-container').appendChild(e);
+  var today = new Date();
+  var time = today.getHours();
 
   if (weather >= 200 && weather <= 232 || weather >= 300 && weather <= 321 || weather >= 500 && weather <= 531 || weather >= 701 && weather <= 781) {
     soggyIcon();
   } else if (weather >= 600 && weather <= 622) {
     chillyIcon();
+  } else if (weather == 800 && (time >= 19 && time <=23 || time >= 0 && time <= 5)) {
+    coolIcon();
   } else if (weather == 800) {
     sunnyIcon();
   } else if (weather >= 801 && weather <= 804) {
@@ -109,6 +113,19 @@ function sunnyIcon() {
   document.querySelector('.icon-container').appendChild(a);
   var b = document.createElement('span');
   b.classList.add('sun');
+  a.appendChild(b);
+};
+
+function coolIcon() {
+  var a = document.createElement('div');
+  a.setAttribute('icon', 'supermoon');
+  a.setAttribute('data-label', 'Cool!');
+  document.querySelector('.icon-container').appendChild(a);
+  var b = document.createElement('span');
+  b.classList.add('moon');
+  a.appendChild(b);
+  var c = document.createElement('span');
+  c.classList.add('meteor');
   a.appendChild(b);
 };
 
