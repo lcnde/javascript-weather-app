@@ -12,8 +12,9 @@ const weather = async function weather(cityName) {
 };
 
 async function formSubmit() {
+  // put here the function that loads the gif with the loading screen
   var cityWeather = await weather(document.frm1.city.value);
-  console.log(cityWeather.name);
+  console.log(cityWeather);
 };
 
 const search = document.getElementById('formSubmit');
